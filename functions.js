@@ -65,7 +65,10 @@ function booksByColor(books) {
  *    ["The Hitchhikers Guide", "The Meaning of Liff"]
  ****************************************************************/
 function titlesByAuthorName(authorName, authors, books) {
-  let theAuthor = authors.find((author) => author.name.includes(authorName));
+  let theAuthor = authors.find((author) =>
+    author.name.toLowerCase().includes(authorName.toLowerCase())
+  );
+  if (!theAuthor) return [];
   return theAuthor.books.map((book) => getBookById(book, books).title);
 }
 //console.log(titlesByAuthorName("George R.R. Martin", authors, books));
